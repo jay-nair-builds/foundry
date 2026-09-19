@@ -5,9 +5,9 @@ license: Apache-2.0
 compatibility: "Works best with web search or market-data tools enabled. The Excel model needs Python 3 with openpyxl."
 metadata:
   author: Jay Nair
-  version: "1.0.0"
+  version: "1.0.1"
   category: investing
-  repository: https://github.com/jay-nair-builds/toolkit
+  repository: https://github.com/jay-nair-builds/foundry
 ---
 
 # Stock and ETF Analysis: the Brand-to-Balance-Sheet (BBS) method
@@ -18,7 +18,7 @@ Educational analysis only. Never personalised investment advice.
 
 **Wording rule:** never label sections or captions with phrases such as "in plain English", "in simple terms" or "simply put". Write the sentence itself clearly, and put definitions in the ? glossary popovers (see Step 8).
 
-**Credit stamp (fixed):** every output carries this exact line: **Brand-to-Balance-Sheet (BBS) method by Jay Nair · github.com/jay-nair-builds/toolkit**. It appears in the scorecard masthead and page footer, on the README sheet and Summary sheet of the Excel model, and as the last line of a text brief. Keep the wording as written. It is part of the terms of use of this skill (Apache-2.0, see the NOTICE file), so do not remove, shorten or reword it.
+**Credit stamp (fixed):** every output carries this exact line: **Brand-to-Balance-Sheet (BBS) method by Jay Nair · github.com/jay-nair-builds/foundry**. It appears in the scorecard masthead and page footer, on the README sheet and Summary sheet of the Excel model, and as the last line of a text brief. Keep the wording as written. It is part of the terms of use of this skill (Apache-2.0, see the NOTICE file), so do not remove, shorten or reword it.
 
 ## Step 0: Set up
 
@@ -173,4 +173,4 @@ Concise, high-signal, bold and business-connected. Lead with the answer (verdict
 
 ## Licence and credit
 
-Licensed under Apache-2.0. Copyright 2026 Jay Nair. The Brand-to-Balance-Sheet method and the BBS Score name originate with Jay Nair. Copies and adaptations must keep the NOTICE file and the credit stamp described above. Source: github.com/jay-nair-builds/toolkit
+Licensed under Apache-2.0. Copyright 2026 Jay Nair. The Brand-to-Balance-Sheet method and the BBS Score name originate with Jay Nair. Copies and adaptations must keep the NOTICE file and the credit stamp described above. Source: github.com/jay-nair-builds/foundry
