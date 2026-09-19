@@ -64,7 +64,7 @@ Ten-year discounted cash flow: five explicit years, then growth fades in a strai
 
 Free to use, share and adapt under the [Apache License 2.0](../../LICENSE). Every output carries this credit line, and copies or adaptations must keep it (see [NOTICE](../../NOTICE)):
 
-> **Brand-to-Balance-Sheet (BBS) method by Jay Nair** · github.com/jay-nair-builds/toolkit
+> **Brand-to-Balance-Sheet (BBS) method by Jay Nair** · github.com/jay-nair-builds/foundry
 
 The Brand-to-Balance-Sheet method, the BBS Score and their names originate with Jay Nair.
 
