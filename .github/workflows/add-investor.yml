@@ -1,0 +1,80 @@
+name: Add investor from request
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: data-refresh
+  cancel-in-progress: false
+
+jobs:
+  add:
+    if: startsWith(github.event.issue.title, 'Add investor:') || contains(github.event.issue.labels.*.name, 'add-investor')
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.result.outputs.status }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
+      OPENFIGI_API_KEY: ${{ secrets.OPENFIGI_API_KEY }}
+      ISSUE: ${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Resolve the request
+        # The issue body is untrusted. It reaches the script only through an environment variable.
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: python3 apps/protege/scripts/add_investor.py
+      - name: Read result
+        id: result
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          r = json.load(open("result.json"))
+          print("status=" + r["status"])
+          print("id=" + r.get("id", ""))
+          PY
+      - name: Fetch filings for the new investor
+        id: fetch
+        if: steps.result.outputs.status == 'added'
+        run: |
+          python3 apps/protege/scripts/fetch_13f.py --ua "$SEC_USER_AGENT" --only "$(python3 -c "import json;print(json.load(open('result.json'))['id'])")"
+          python3 apps/protege/scripts/feeds.py
+      - name: Commit and publish
+        if: steps.result.outputs.status == 'added' && steps.fetch.outcome == 'success'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/protege/data apps/protege/feeds
+          git commit -m "Add investor from request #$ISSUE"
+          git pull --rebase origin main
+          git push
+      - name: Reply and close
+        if: always()
+        run: |
+          if [ "${{ steps.result.outputs.status }}" = "added" ] && [ "${{ steps.fetch.outcome }}" != "success" ]; then
+            printf 'The investor was found but loading their filings failed. A maintainer will take a look.\n' > comment.md
+          fi
+          if [ -f comment.md ]; then gh issue comment "$ISSUE" --body-file comment.md; fi
+          if [ "${{ steps.result.outputs.status }}" = "added" ] && [ "${{ steps.fetch.outcome }}" = "success" ]; then
+            gh issue close "$ISSUE" --reason completed
+          elif [ "${{ steps.result.outputs.status }}" != "" ] && [ "${{ steps.result.outputs.status }}" != "added" ]; then
+            gh issue close "$ISSUE" --reason "not planned"
+          fi
+
+  deploy:
+    needs: add
+    if: needs.add.outputs.status == 'added'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml
