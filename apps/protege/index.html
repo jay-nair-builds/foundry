@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protégé: Invest like the greats</title>
+<meta name="description" content="See what the world's great investors own, what changed last quarter, and build a mimic portfolio from their public 13F filings.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand"><span class="logo" aria-hidden="true">P</span><div><h1>Protégé</h1><p>Invest like the greats.</p></div></div>
+    <div class="top-r">
+      <div class="asof" id="asof"></div>
+      <button class="btn" id="add-open">+ Add investor</button>
+    </div>
+  </div>
+</header>
+
+<div class="banner" id="banner" hidden></div>
+<div class="alerts wrap" id="alerts" hidden></div>
+
+<main class="wrap">
+  <section class="gallery-head">
+    <h2>Pick an investor</h2>
+    <div class="chips" id="chips" role="group" aria-label="Filter by style"></div>
+  </section>
+  <section class="gallery" id="gallery" aria-label="Investors"></section>
+
+  <section id="detail" class="detail" hidden>
+    <div class="d-head">
+      <div>
+        <h2 id="d-name"></h2>
+        <p class="sub" id="d-fund"></p>
+        <p class="blurb" id="d-blurb"></p>
+      </div>
+      <div class="d-side">
+        <div class="quarter"><label for="d-quarter">Quarter</label><select id="d-quarter"></select></div>
+        <div class="d-actions"><button class="btn alt" id="d-follow" aria-pressed="false">&#9734; Follow</button><a class="rss" id="d-rss" href="#" hidden>RSS</a></div>
+      </div>
+    </div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <nav class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="holdings">Holdings</button>
+      <button role="tab" aria-selected="false" data-tab="changes">What changed</button>
+      <button role="tab" aria-selected="false" data-tab="track">Track record</button>
+      <button role="tab" aria-selected="false" data-tab="mimic">Mimic portfolio</button>
+      <button role="tab" aria-selected="false" data-tab="overlap">Compare</button>
+    </nav>
+
+    <div id="tab-holdings" class="panel"></div>
+    <div id="tab-changes" class="panel" hidden></div>
+    <div id="tab-track" class="panel" hidden></div>
+    <div id="tab-mimic" class="panel" hidden></div>
+    <div id="tab-overlap" class="panel" hidden></div>
+  </section>
+</main>
+
+<dialog id="add-dialog" class="dlg">
+  <form method="dialog">
+    <h3>Add an investor</h3>
+    <p class="sub">Any fund that files a 13F with the SEC can be added. Enter its name or CIK number.</p>
+    <label for="add-name">Fund name or CIK</label>
+    <input id="add-name" type="text" maxlength="100" placeholder="e.g. Pershing Square Capital Management" autocomplete="off">
+    <p class="note" id="add-msg"></p>
+    <p class="note">Submitting opens a pre-filled request on GitHub (free account needed). An automation checks the SEC, adds the investor and rebuilds the site, usually within a few minutes.</p>
+    <div class="actions"><button class="btn" id="add-go" type="button">Request on GitHub</button><button class="btn alt" value="cancel">Close</button></div>
+  </form>
+</dialog>
+
+<footer class="wrap foot">
+  <p><strong>Education only. Not investment advice.</strong> 13F filings show long US-listed equity positions only, reported up to 45 days after quarter end. They omit shorts, bonds, cash, non-US holdings and any trades since. Copying a portfolio does not copy the investor's timing, sizing discipline or risk limits. Source: SEC EDGAR Form 13F-HR.</p>
+  <p class="credit">Protégé by Jay Nair · github.com/jay-nair-builds/foundry</p>
+</footer>
+
+<script src="data/investors.js"></script>
+<script src="data/holdings.js"></script>
+<script src="data/prices.js"></script>
+<script src="data/track.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
