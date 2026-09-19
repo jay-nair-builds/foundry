@@ -42,6 +42,10 @@ toolkit/
 
 Every skill or app is self-contained in its own folder, so it can be copied out on its own.
 
+## Licence and credit
+
+Licensed under the [Apache License 2.0](LICENSE): free to use, share and adapt. Keep the [NOTICE](NOTICE) and the credit line **Brand-to-Balance-Sheet (BBS) method by Jay Nair · github.com/jay-nair-builds/toolkit**, which the skill prints on every scorecard, model and brief it produces.
+
 ## Disclaimer
 
 Everything here is for education. Nothing is investment, legal or tax advice, and nothing is a recommendation to buy, sell or hold any security. Examples use data as of the date shown and are not updated.

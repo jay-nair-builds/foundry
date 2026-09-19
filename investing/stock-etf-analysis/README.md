@@ -60,6 +60,14 @@ Ten-year discounted cash flow: five explicit years, then growth fades in a strai
 - The equity risk premium and cost of debt are assumptions.
 - Forecasts are estimates. Past performance does not predict future returns.
 
+## Licence and credit
+
+Free to use, share and adapt under the [Apache License 2.0](../../LICENSE). Every output carries this credit line, and copies or adaptations must keep it (see [NOTICE](../../NOTICE)):
+
+> **Brand-to-Balance-Sheet (BBS) method by Jay Nair** · github.com/jay-nair-builds/toolkit
+
+The Brand-to-Balance-Sheet method, the BBS Score and their names originate with Jay Nair.
+
 ## Disclaimer
 
 Education only. This is analysis under stated assumptions, not personalised investment advice and not a recommendation to buy, sell or hold anything. The author is not a licensed advisor.

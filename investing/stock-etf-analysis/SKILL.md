@@ -9,7 +9,9 @@ Analyse a stock (or ETF) the way a CFA charterholder would, then present it so a
 
 Educational analysis only. Never personalised investment advice.
 
-**Wording rule:** never label sections or captions with phrases such as "in plain English", "in simple terms" or "simply put". Write the sentence itself clearly, and put definitions in the ? glossary popovers (see Step 6).
+**Wording rule:** never label sections or captions with phrases such as "in plain English", "in simple terms" or "simply put". Write the sentence itself clearly, and put definitions in the ? glossary popovers (see Step 8).
+
+**Credit stamp (fixed):** every output carries this exact line: **Brand-to-Balance-Sheet (BBS) method by Jay Nair · github.com/jay-nair-builds/toolkit**. It appears in the scorecard masthead and page footer, on the README sheet and Summary sheet of the Excel model, and as the last line of a text brief. Keep the wording as written. It is part of the terms of use of this skill (Apache-2.0, see the NOTICE file), so do not remove, shorten or reword it.
 
 ## Step 0: Set up
 
@@ -96,13 +98,16 @@ Every section opens with a one-line lead that states the takeaway. **Every techn
 
 ### Page structure (visual scorecard)
 
-1. **Masthead**: eyebrow with the full framework name, the conclusion as the headline, a one-sentence dek, then a four-cell **approach and parameters strip** (method, scenarios, discount rate, score), each with a ? popover, and the price date.
+The page tells a story in this order: answer first, then the evidence from the brand outwards, then the price, then what could break the answer. Companies sit side by side inside every chapter.
+
+1. **Masthead**: eyebrow with the full framework name, the conclusion as the headline, a one-sentence dek, a byline with the credit stamp, then a four-cell **approach and parameters strip** (method, scenarios, discount rate, score), each with a ? popover, and the price date.
 2. **Verdict at a glance**: one **identical card per company**, so every element sits in the same place. Order inside each card: name, ticker and market cap with a verdict chip; three large figures (price, Base value, gap to price); a **fair-value range bar** (Bear to Bull band, Base marker, dashed price line, every marker directly labelled with its value); a **52-week range bar**; a **BBS gauge** with the four bands; a strip of forward P/E, S&P 500 forward P/E and PEG. Follow the cards with a bottom-line paragraph.
-3. **P/E against the market and the industry**: trailing and forward bar panels (company bars in series colours, benchmarks in grey, Base-implied P/E as outlined bars), a multiples table with premium or discount, and a method note.
-4. **What today's price already assumes**: reverse-DCF bars, Base versus priced-in growth.
-5. **Financial track record and outlook**: per company, a revenue bar chart (actual solid, forecast lighter and dashed), a gross and operating margin line chart, and a summary table with forecast columns tinted.
-6. **Portfolio view**, **macro backdrop** (four headline tiles, relevance matrix, one panel per company), **BBS pillar table** (10-segment meters with evidence), **marketing lens**, **sensitivity heat tables**, **pre-mortem**.
-7. **Download panel** for the Excel model, then **method, assumptions, what changed since the last version, and sources**.
+3. **The valuation model in brief**: four short steps (forecast, turn profit into cash, discount to today, value per share), then one card per company with Bear, Base and Bull fair values and the assumptions behind them, the discount rate and long-run growth, the gap to price, the Excel download button and links to the detail below.
+4. **The story behind the verdict**: a chapter strip with links, each chapter phrased as the question it answers. Every chapter heading carries a "Chapter N of 7" label and its question.
+5. **Chapter 1, the brand**: the marketing lens. **Chapter 2, the business**: portfolio view of segments, brands or categories. **Chapter 3, the track record**: ten years of results and five forecast periods (revenue bar chart with forecast lighter and dashed, gross and operating margin line chart, summary table with forecast columns tinted). **Chapter 4, the economy around it**: macro backdrop (four headline tiles, relevance matrix, one panel per company). **Chapter 5, the score**: BBS pillar table with 10-segment meters and evidence.
+6. **Chapter 6, the price**: what today's price already assumes (reverse-DCF bars, Base versus priced-in growth), then P/E against the market and the industry (trailing and forward bar panels with company bars in series colours, benchmarks in grey and Base-implied P/E as outlined bars, a multiples table with premium or discount, and a method note).
+7. **Chapter 7, what could break it**: sensitivity heat tables, then the pre-mortem.
+8. **Download panel** for the Excel model, then **method, assumptions, what changed since the last version, and sources**, then a page footer with the credit stamp and the education-only disclaimer.
 
 ### Visual identity (institutional research, not template-looking)
 
@@ -122,8 +127,8 @@ An HTML page where the user can **switch scenario and change discount rate, term
 ### Format (c): Excel model (Damodaran-style)
 Use the xlsx skill. **One engine, two outputs:** compute the numbers in one script and use the same inputs to write the workbook and the page, then recalculate the workbook and reconcile every value per share, forecast line and history check against the script before delivery.
 
-- **README**: method, colour code, sheet list, sources, limits, and how to open it in Google Sheets (upload to Drive, open with Google Sheets).
-- **Summary**: both companies side by side, linked to the company sheets, including multiples and the P/E implied by the Base value.
+- **README**: the credit stamp as the first line under the title, then method, colour code, sheet list, sources, limits, and how to open it in Google Sheets (upload to Drive, open with Google Sheets).
+- **Summary**: both companies side by side, linked to the company sheets, including multiples and the P/E implied by the Base value, with the credit stamp under the title.
 - **One valuation sheet per company**: market data; cost-of-capital build-up; **story-to-numbers scenario table** with a narrative per scenario (Bear, Base, Bull, Market-implied); ten-year FCFF projection per scenario; valuation bridge; live sensitivity grid.
 - **One P&L sheet per company**: ten years of reported history, a latest-twelve-months column and five forecast periods. Rows: revenue, growth, cost of revenue, gross profit and margin, R&D, SG&A, other operating items, total operating expenses, operating income and margin, interest and other income, pre-tax income, tax and effective rate, net income and margin, diluted shares, EPS and growth, free cash flow and margin, capex and capex as a share of revenue. Forecast revenue, operating margin and free cash flow **link to the Base scenario**; gross margin, R&D share, other income and share change are blue inputs. Add **integrity checks** (calculated versus reported operating income and net income, differences shown as zero) and a growth and margin summary (3, 5, 9-year CAGRs, average margin). Comments explain one-offs, split adjustments and definitions.
 - **PE_Benchmarks**: company multiples, S&P 500 and industry benchmarks with sources and dates, premium or discount, P/E implied by the Base value, and the model's year-1 EPS against consensus.
@@ -133,7 +138,7 @@ Use the xlsx skill. **One engine, two outputs:** compute the numbers in one scri
 - Deliver the file with SendUserFile, and offer it inside the page through the `downloads` capability.
 
 ### Format (d): Quick text brief
-One screen in chat: snapshot, fair-value range and read-out, P/E versus market and industry, BBS score, top three pre-mortem risks, bottom line on the trade-offs.
+One screen in chat: snapshot, fair-value range and read-out, P/E versus market and industry, BBS score, top three pre-mortem risks, bottom line on the trade-offs, then the credit stamp as the last line.
 
 ## ETFs
 
@@ -151,3 +156,7 @@ For an ETF, replace Steps 1-2 with: index and method, TER, spread, tracking diff
 ## Style
 
 Concise, high-signal, bold and business-connected. Lead with the answer (verdict, score, fair-value range), then the evidence.
+
+## Licence and credit
+
+Licensed under Apache-2.0. Copyright 2026 Jay Nair. The Brand-to-Balance-Sheet method and the BBS Score name originate with Jay Nair. Copies and adaptations must keep the NOTICE file and the credit stamp described above. Source: github.com/jay-nair-builds/toolkit
