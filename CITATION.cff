@@ -1,14 +1,14 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "Toolkit: Claude skills, apps and tools for marketing, media, brand and investing"
+title: "Foundry: skills, apps and tools that turn ideas into solutions"
 type: software
 authors:
   - family-names: Nair
     given-names: Jay
-version: 1.0.0
+version: 1.0.1
 date-released: 2026-09-19
 license: Apache-2.0
-repository-code: "https://github.com/jay-nair-builds/toolkit"
+repository-code: "https://github.com/jay-nair-builds/foundry"
 keywords:
   - claude
   - agent-skills
