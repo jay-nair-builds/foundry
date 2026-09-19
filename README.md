@@ -1,13 +1,13 @@
 <div align="center">
 
-# Toolkit
+# Foundry
 
-**Claude skills, apps and tools for marketing, media, brand and investing.**
-Built to connect what marketers know about brands and audiences to the numbers that decide whether a business, a campaign or a stock is worth backing.
+**Ideas to solutions: Claude skills, apps and tools, built for people.**
+Everything here is designed to be picked up and used, with the working files, examples and method alongside.
 
-[![Licence: Apache-2.0](https://img.shields.io/github/license/jay-nair-builds/toolkit?color=0b5d3b)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/jay-nair-builds/toolkit?color=0b5d3b)](https://github.com/jay-nair-builds/toolkit/releases)
-[![Last commit](https://img.shields.io/github/last-commit/jay-nair-builds/toolkit?color=0b5d3b)](https://github.com/jay-nair-builds/toolkit/commits/main)
+[![Licence: Apache-2.0](https://img.shields.io/github/license/jay-nair-builds/foundry?color=0b5d3b)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/jay-nair-builds/foundry?color=0b5d3b)](https://github.com/jay-nair-builds/foundry/releases)
+[![Last commit](https://img.shields.io/github/last-commit/jay-nair-builds/foundry?color=0b5d3b)](https://github.com/jay-nair-builds/foundry/commits/main)
 [![Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-0b5d3b)](https://agentskills.io/specification)
 
 <img src="skills/stock-etf-analysis/assets/screens/02-verdict.png" alt="Scorecard from the stock-etf-analysis skill comparing Nvidia and Meta" width="860">
@@ -20,7 +20,7 @@ Built to connect what marketers know about brands and audiences to the numbers t
 |---|---|---|---|---|
 | [stock-etf-analysis](skills/stock-etf-analysis/) | Skill | Investing | Fair-value forecast, over or undervalued read, Brand-to-Balance-Sheet score, macro backdrop, pre-mortem, visual scorecard and Excel model | v1.0.0 |
 
-More skills and apps are planned across marketing analytics, media planning, brand health and brand-to-financials tools. They are added here only once they are built and tested.
+More skills and apps are on the way. They are added here only once they are built and tested.
 
 ## Quick start
 
@@ -31,7 +31,7 @@ More skills and apps are planned across marketing analytics, media planning, bra
 ## Repository layout
 
 ```
-toolkit/
+foundry/
 ├── skills/                 Claude skills, one folder each, in the Agent Skills format
 │   └── <skill-name>/
 │       ├── SKILL.md        instructions and metadata (required)
@@ -47,7 +47,7 @@ toolkit/
 └── LICENSE · NOTICE
 ```
 
-Every skill or app is self-contained in its own folder, so it can be copied out on its own. Each skill states its theme (investing, marketing, media, brand) in the `category` field of its `SKILL.md` metadata and in the catalogue above.
+Every skill or app is self-contained in its own folder, so it can be copied out on its own. Each skill states its theme in the `category` field of its `SKILL.md` metadata and in the catalogue above.
 
 ## Contributing
 
@@ -55,7 +55,7 @@ Ideas, bug reports and improvements are welcome. Read [CONTRIBUTING.md](CONTRIBU
 
 ## Licence and credit
 
-Licensed under the [Apache License 2.0](LICENSE): free to use, share and adapt. Keep the [NOTICE](NOTICE) and the credit line **Brand-to-Balance-Sheet (BBS) method by Jay Nair · github.com/jay-nair-builds/toolkit**, which the stock-etf-analysis skill prints on every scorecard, model and brief it produces.
+Licensed under the [Apache License 2.0](LICENSE): free to use, share and adapt. Keep the [NOTICE](NOTICE) and the credit line **Brand-to-Balance-Sheet (BBS) method by Jay Nair · github.com/jay-nair-builds/foundry**, which the stock-etf-analysis skill prints on every scorecard, model and brief it produces.
 
 To cite this work, use the "Cite this repository" button on GitHub, which reads [CITATION.cff](CITATION.cff).
 
