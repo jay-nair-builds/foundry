@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest. This repository is a personal toolkit, kept small and high quality, so contributions are reviewed for fit as well as correctness.
+Thanks for your interest. This repository is a personal build space, kept small and high quality, so contributions are reviewed for fit as well as correctness.
 
 ## Ways to help
 
