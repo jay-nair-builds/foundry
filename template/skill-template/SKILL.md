@@ -7,7 +7,7 @@ metadata:
   author: Your Name
   version: "0.1.0"
   category: investing
-  repository: https://github.com/jay-nair-builds/toolkit
+  repository: https://github.com/jay-nair-builds/foundry
 ---
 
 # Skill name
