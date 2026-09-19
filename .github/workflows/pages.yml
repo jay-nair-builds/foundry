@@ -1,0 +1,46 @@
+name: Deploy Protégé to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ["apps/**", ".github/workflows/pages.yml"]
+  schedule:
+    - cron: "30 22 * * 1-5"   # weekdays after the US close: refresh prices and track records
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Refresh prices and track records (built at deploy time, not committed)
+        run: python3 apps/protege/scripts/refresh_prices.py || echo "Price refresh failed; the site will show holdings without prices."
+      - name: Assemble site
+        run: |
+          mkdir _site
+          cp -r apps _site/apps
+          find _site -name "__pycache__" -prune -exec rm -rf {} +
+          rm -rf _site/apps/protege/tests _site/apps/protege/scripts
+          echo '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=apps/protege/"><a href="apps/protege/">Protégé</a>' > _site/index.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
