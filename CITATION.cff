@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Toolkit: Claude skills, apps and tools for marketing, media, brand and investing"
+type: software
+authors:
+  - family-names: Nair
+    given-names: Jay
+version: 1.0.0
+date-released: 2026-09-19
+license: Apache-2.0
+repository-code: "https://github.com/jay-nair-builds/toolkit"
+keywords:
+  - claude
+  - agent-skills
+  - valuation
+  - dcf
+  - brand
+  - marketing
