@@ -1,0 +1,32 @@
+name: Skill or app idea
+description: Suggest a new skill, app or an improvement to an existing one
+labels: ["enhancement"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: What should it do, in one line?
+    validations:
+      required: true
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme
+      options:
+        - Investing
+        - Marketing
+        - Media
+        - Brand
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: job
+    attributes:
+      label: Who would use it, and what job does it do for them?
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example input and the output you would want
