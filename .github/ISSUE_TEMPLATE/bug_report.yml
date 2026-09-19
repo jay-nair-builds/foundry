@@ -1,0 +1,29 @@
+name: Bug report
+description: Something is wrong, such as a bad number, a broken script or unclear instructions
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: item
+    attributes:
+      label: Which skill or app?
+      options:
+        - stock-etf-analysis
+        - Other or repository-wide
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Include the input you used and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      description: For example Claude app, Claude Code, Python version.
