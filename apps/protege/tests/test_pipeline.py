@@ -49,6 +49,20 @@ class Sec(unittest.TestCase):
         self.assertEqual(len(pos), 1)
         self.assertAlmostEqual(pos[0]["weight"], 0.5)
 
+    def test_values_in_thousands_are_scaled_to_dollars(self):
+        # $200 shares reported as 0.2 per share means <value> is in thousands of dollars.
+        rows = [{"name": "A", "cls": "COM", "cusip": "1", "value": 200.0, "shares": 1000.0},
+                {"name": "B", "cls": "COM", "cusip": "2", "value": 100.0, "shares": 500.0}]
+        self.assertEqual(sec.value_scale(rows), 1000)
+        total, _, pos = sec.aggregate(rows)
+        self.assertEqual(total, 300000)
+        self.assertEqual(pos[0]["value"], 200000)
+
+    def test_values_in_dollars_are_left_alone(self):
+        rows = [{"name": "A", "cls": "COM", "cusip": "1", "value": 200000.0, "shares": 1000.0}]
+        self.assertEqual(sec.value_scale(rows), 1)
+        self.assertEqual(sec.value_scale([]), 1)
+
 
 class Figi(unittest.TestCase):
     def test_pick_prefers_common_stock(self):
