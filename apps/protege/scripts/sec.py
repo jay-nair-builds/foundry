@@ -99,8 +99,22 @@ def parse_info_table(xml_bytes):
     return rows
 
 
+def value_scale(rows):
+    """Return 1000 if the filing reports <value> in thousands of dollars, else 1.
+
+    Since 2023 the SEC asks for whole dollars, but some filers still report thousands. Real equity
+    prices rarely sit below $1, so a median value per share under $1 means the values are in thousands.
+    """
+    prices = sorted(r["value"] / r["shares"] for r in rows if r["shares"] > 0 and r["value"] > 0)
+    if not prices:
+        return 1
+    return 1000 if prices[len(prices) // 2] < 1.0 else 1
+
+
 def aggregate(rows, max_positions=60):
     """Combine lines per security, compute weights against the full portfolio, keep the top N."""
+    scale = value_scale(rows)
+    rows = [{**r, "value": r["value"] * scale} for r in rows]
     pos = {}
     for r in rows:
         key = r["cusip"] or f"{r['name']}|{r['cls']}"
