@@ -90,7 +90,8 @@
     $("#detail").hidden = false;
     $("#d-name").textContent = inv.name;
     $("#d-fund").textContent = inv.fund + " · " + inv.style;
-    $("#d-blurb").textContent = inv.blurb;
+    var lp = latestPeriod(inv.id), age = (Date.parse(DATA.generated) - Date.parse(lp)) / 864e5;
+    $("#d-blurb").textContent = inv.blurb + (age > 200 ? " Note: the latest 13F on file is for the period ending " + lp + ", so this investor may have stopped filing or moved to another filer ID." : "");
     var snaps = byId[state.id].snapshots;
     $("#d-quarter").innerHTML = snaps.map(function (s, i) {
       return '<option value="' + i + '"' + (i === state.q ? " selected" : "") + ">Period " + esc(s.period) + " (filed " + esc(s.filed) + ")</option>";
